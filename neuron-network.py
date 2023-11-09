@@ -7,7 +7,7 @@ from os.path import exists
 
 FILE_MODEL = "model.dat"
 LEARNING_RATE = 1E-3
-NB_ITERATION = 1
+NB_ITERATION = 5
 DATASET_NAME = "dataset-full.csv"
 
 

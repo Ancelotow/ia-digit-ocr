@@ -1,3 +1,4 @@
+from math import *
 from random import random
 import matplotlib.pyplot as plt
 
@@ -13,6 +14,7 @@ class Neuron:
         output = 0
         for i in range(len(self.weights)):
             output += self.weights[i] * inputs[i]
+        output = 1.0 / (1.0 + exp(- output))
         return output
 
     def learn(self, inputs, desired):
@@ -21,13 +23,3 @@ class Neuron:
         for i in range(len(self.weights)):
             self.weights[i] += self.learning_rate * error * inputs[i]
         return error
-
-
-if __name__ == "__main__":
-    n = Neuron(2, 0.1)
-    output = n.run([1, 2])
-    errors = []
-    for i in range(100):
-        errors.append(n.learn([1, 2], 1.5))
-    plt.plot(errors)
-    plt.show()
